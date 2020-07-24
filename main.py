@@ -84,14 +84,14 @@ while True:
     # Update kills text file
     if Config[5]:
         for mob in GetKillMobsList(stats):
-            f = open("./kills/"+mob[0]+".txt", "a")
+            f = open("./kills/"+mob[0]+".txt", "w")
             f.write(str(round(mob[1])))
             f.close()
     else:
         [x.lower() for x in Config[3]]
         for mob in GetKillMobsList(stats):
             if mob[0].replace("kills_", "").lower() in Config[3]:
-                f = open("./kills/"+mob[0]+".txt", "a")
+                f = open("./kills/"+mob[0]+".txt", "w")
                 f.write(str(round(mob[1])))
                 f.close()
 

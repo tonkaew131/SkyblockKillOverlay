@@ -7,11 +7,11 @@ Username = ""
 Profile = ""
 
 # Enable all kill
-EnableAll = True
+EnableAll = False
 
 # Refresh time ( in seconds ) ( default is 30 )
 RefreshTime = 30
 
 # Kill count enable list ( Leave it empty when EnableAll is True )
 # Example: ['zealot_enderman', 'ruin_wolf']
-EnableKillCount = ['']
+EnableKillCount = ['zealot_enderman', 'ruin_wolf']
