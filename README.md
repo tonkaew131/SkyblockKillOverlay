@@ -10,7 +10,7 @@ python main.py
 
 This application will automatic create text file in kills directory. Then you can add text file to your OBS or etc.
 
-![OBS Picture](https://github.com/tonkaew/yaktocat.png)
+![OBS Picture](https://github.com/tonkaew131/SkyblockKillOverlay/picture1.png)
 
 ## Contributing
 
