@@ -40,7 +40,7 @@ Feel free to fix my error.
 
 ## Authors
 
-* **Athicha Leksansern** - *Initial work* - [Tonkaew](https://github.com/tonkaew131/SkyblockKillOverlay/picture1.png)
+* **Athicha Leksansern** - *Initial work* - [Tonkaew](https://github.com/tonkaew131/)
 
 ## License
 
