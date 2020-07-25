@@ -9,7 +9,7 @@ Create Text file that contained kill count of all mobs or specific mob. Kill cou
 
 ### From release
 
-1. Download the program, By click [this](https://github.com/tonkaew131/SkyblockKillOverlay/releases/tag/1) or go to release page
+1. Download the program, By click [this](https://github.com/tonkaew131/SkyblockKillOverlay/releases/tag/1.1) or go to release page
 
 2. Extract .rar file, wherever you want.
 
