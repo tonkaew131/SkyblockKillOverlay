@@ -1,6 +1,7 @@
 import os
 import time
 import requests
+from sys import exit
 
 def GetKillMobsList(stats):
     MobsList = []
