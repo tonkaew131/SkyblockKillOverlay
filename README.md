@@ -2,6 +2,9 @@
 
 Create Text file that contained kill count of all mobs or specific mob. Kill count get from Hypixel API and update every 30 seconds by default.
 
+- Kill Count
+- Fairy souls Count
+
 ## Installation & Run
 
 ### From release
@@ -34,14 +37,17 @@ This application will automatic create text file in kills directory. Then you ca
 ApiKey = ""
 
 # Your minecraft username & profile name
-Username = ""
-Profile = ""
+Username    = ""
+ProfileName = ""
 
 # Enable all kill
-EnableAll = False
+EnableKillAll = True
 
 # Refresh time ( in seconds ) ( default is 30 )
 RefreshTime = 30
+
+# etc
+EnableFairySouls = True
 
 # Kill count enable list ( Leave it empty when EnableAll is True )
 # Example: ['zealot_enderman', 'ruin_wolf']
