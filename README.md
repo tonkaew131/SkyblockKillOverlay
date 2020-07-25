@@ -6,11 +6,13 @@ Create Text file that contained kill count of all mobs or specific mob. Kill cou
 
 ### From release
 
-First, you need to download this program. By click [this](https://github.com/tonkaew131/SkyblockKillOverlay/releases/tag/1) or go to release page
+1. Download the program, By click [this](https://github.com/tonkaew131/SkyblockKillOverlay/releases/tag/1) or go to release page
 
-After that, Extract .RAR file. You will get folder's name Skyblock Kill Overlay V1.
+2. Extract .rar file, wherever you want.
 
-Now you just click main.exe to run ( don't forget to config first )
+3. Run main.exe for first time to create config file.
+
+4. Run main.exe and Enojoy!
 
 ### From Source
 
