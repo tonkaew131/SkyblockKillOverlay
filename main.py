@@ -42,18 +42,23 @@ Config = [config.ApiKey, config.Username, config.Profile,
         config.EnableKillCount, config.RefreshTime, config.EnableAll]    
 if Config[0]==None:
     print("Invalid API Key")
+    input("Press Enter to continue...")
     exit()
 elif Config[1]==None:
     print("Username can't be empty")
+    input("Press Enter to continue...")
     exit()
 elif Config[2]==None:
     print("Profile can't be empty")
+    input("Press Enter to continue...")
     exit()
 elif len(Config[3])==0 and Config[5]==False:
     print("You must choose enable all or enable some")
+    input("Press Enter to continue...")
     exit()
 elif type(Config[4])!=int:
     print("Refresh time must be number")
+    input("Press Enter to continue...")
     exit()
 
 # Check if username is valid and get uuid
@@ -65,9 +70,11 @@ if status == 200:
     UUID = data["id"]
 elif status == 204:
     print("Username not found")
+    input("Press Enter to continue...")
     exit()
 else:
     print("Mojang API Error")
+    input("Press Enter to continue...")
     exit()
 
 while True:
@@ -99,9 +106,11 @@ while True:
                         stats = Profile["members"][UUID]["stats"]
                     else:
                         print("[ERROR]: API Disable")
+                        input("Press Enter to continue...")
                         exit()
             if not stats:
                 print("Can't find " + Config[2] + " profile")
+                input("Press Enter to continue...")
                 exit()
     
     # Update kills text file
