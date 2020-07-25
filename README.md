@@ -12,7 +12,9 @@ Create Text file that contained kill count of all mobs or specific mob. Kill cou
 
 3. Run main.exe for first time to create config file.
 
-4. Run main.exe and Enojoy!
+4. Config some settings.
+
+4. Run main.exe and Enjoy!
 
 ### From Source
 
