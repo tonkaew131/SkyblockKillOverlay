@@ -8,9 +8,11 @@ Create Text file that contained kill count of all mobs or specific mob. Kill cou
 
 First, you need to download this program. By click [this](https://github.com/tonkaew131/SkyblockKillOverlay/releases/tag/1) or go to release page
 
-After that, Extract .RAR file. You will get folder's name Skyblock Kill Overlay V1. Now you just click main.exe to run ( don't forget to config first )
+After that, Extract .RAR file. You will get folder's name Skyblock Kill Overlay V1.
 
-## From Source
+Now you just click main.exe to run ( don't forget to config first )
+
+### From Source
 
 ```
 python main.py
