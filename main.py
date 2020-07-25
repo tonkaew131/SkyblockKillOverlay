@@ -1,4 +1,3 @@
-import config as config
 import os
 import time
 import requests
@@ -10,11 +9,34 @@ def GetKillMobsList(stats):
             MobsList.append([mob, stats[mob]])
     return MobsList
 
-# Check if folder is exist
+# Check if folder is not exist
 if not os.path.exists('kills'):
     os.makedirs('kills')
     
+# Check if config file is not exist
+if not os.path.isfile('./config.py'):
+    f = open("./config.py", "w")
+    f.write("""# You can obtain an API key by joining mc.hypixel.net 
+# with a valid Minecraft account and running the /api command.
+ApiKey = ""
+
+# Your minecraft username & profile name
+Username = ""
+Profile = ""
+
+# Enable all kill
+EnableAll = True
+
+# Refresh time ( in seconds ) ( default is 30 )
+RefreshTime = 30
+
+# Kill count enable list ( Leave it empty when EnableAll is True )
+# Example: ['zealot_enderman', 'ruin_wolf']
+EnableKillCount = ['zealot_enderman', 'enderman']""")
+    f.close()
+
 # Check if config is valid
+import config as config
 Config = [config.ApiKey, config.Username, config.Profile, 
         config.EnableKillCount, config.RefreshTime, config.EnableAll]    
 if Config[0]==None:
