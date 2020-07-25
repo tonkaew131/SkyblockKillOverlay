@@ -35,6 +35,10 @@ RefreshTime = 30
 # Example: ['zealot_enderman', 'ruin_wolf']
 EnableKillCount = ['zealot_enderman', 'enderman']""")
     f.close()
+    print("No Config file, created.")
+    print("Please set config first.")
+    input("Press Enter to continue...")
+    exit()
 
 # Check if config is valid
 import config as config
