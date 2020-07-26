@@ -41,18 +41,25 @@ ApiKey = ""
 Username    = ""
 ProfileName = ""
 
-# Enable all kill
-EnableKillAll = True
-
 # Refresh time ( in seconds ) ( default is 30 )
 RefreshTime = 30
 
-# etc
-EnableFairySouls = True
-
-# Kill count enable list ( Leave it empty when EnableAll is True )
+# --------------------------- Total Kill --------------------------- #
+# Kill total count mobs list ( Leave it empty when EnabletTotalKill_AllMobs is True )
 # Example: ['zealot_enderman', 'ruin_wolf']
-EnableKillCount = ['zealot_enderman', 'enderman']
+EnableTotalKill = ['zealot_enderman', 'ruin_wolf']
+# Enable total kill ( all mobs )
+EnabletTotalKill_AllMobs = False
+
+# -------------------- Kill since program start -------------------- #
+# Kill count mobs list ( Leave it empty when EnabletTotalKill_AllMobs is True )
+# Example: ['zealot_enderman', 'ruin_wolf']
+EnableKill = []
+# Enable kill ( all mobs )
+EnabletKill_AllMobs = True
+
+# ------------------------------ etc ------------------------------ #
+EnableFairySouls = True
 ```
 
 ## Contributing
