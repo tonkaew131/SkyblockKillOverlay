@@ -2,7 +2,8 @@
 
 Create Text file that contained kill count of all mobs or specific mob. Kill count get from Hypixel API and update every 30 seconds by default.
 
-- Kill Count
+- Total Kill Count
+- Kill since program started
 - Fairy souls Count
 
 ## Installation & Run
