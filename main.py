@@ -27,18 +27,25 @@ ApiKey = ""
 Username    = ""
 ProfileName = ""
 
-# Enable all kill
-EnableKillAll = True
-
 # Refresh time ( in seconds ) ( default is 30 )
 RefreshTime = 30
 
-# etc
-EnableFairySouls = True
-
-# Kill count enable list ( Leave it empty when EnableAll is True )
+# --------------------------- Total Kill --------------------------- #
+# Kill total count mobs list ( Leave it empty when EnabletTotalKill_AllMobs is True )
 # Example: ['zealot_enderman', 'ruin_wolf']
-EnableKillCount = ['zealot_enderman', 'enderman']""")
+EnableTotalKill = ['zealot_enderman', 'ruin_wolf']
+# Enable total kill ( all mobs )
+EnabletTotalKill_AllMobs = False
+
+# -------------------- Kill since program start -------------------- #
+# Kill count mobs list ( Leave it empty when EnabletTotalKill_AllMobs is True )
+# Example: ['zealot_enderman', 'ruin_wolf']
+EnableKill = []
+# Enable kill ( all mobs )
+EnabletKill_AllMobs = True
+
+# ------------------------------ etc ------------------------------ #
+EnableFairySouls = True""")
     f.close()
     print("No Config file, created.")
     print("Please set config first.")
@@ -52,8 +59,13 @@ ApiKey           = config.ApiKey
 Username         = config.Username
 ProfileName      = config.ProfileName
 RefreshTime      = config.RefreshTime
-EnableKillCount  = config.EnableKillCount
-EnableKillAll    = config.EnableKillAll
+
+EnableTotalKill             = config.EnableTotalKill
+EnabletTotalKill_AllMobs    = config.EnabletTotalKill_AllMobs
+
+EnableKill          = config.EnableKill
+EnabletKill_AllMobs = config.EnabletKill_AllMobs
+
 EnableFairySouls = config.EnableFairySouls
 
 if ApiKey==None:
@@ -68,8 +80,12 @@ elif ProfileName==None:
     print("Profile can't be empty")
     input("Press Enter to continue...")
     exit()
-elif len(EnableKillCount)==0 and EnableKillAll==False:
-    print("You must choose enable all or enable some")
+elif (len(EnableTotalKill)!=0) and EnabletTotalKill_AllMobs:
+    print("You must choose Enable all mobs or Enable some mobs or Disable both")
+    input("Press Enter to continue...")
+    exit()
+elif (len(EnableKill)!=0) and EnabletKill_AllMobs:
+    print("You must choose Enable all mobs or Enable some mobs or Disable both")
     input("Press Enter to continue...")
     exit()
 elif type(RefreshTime)!=int:
@@ -93,6 +109,7 @@ else:
     input("Press Enter to continue...")
     exit()
 
+FirstTime = True
 while True:
     # Check if Hypixel API is limit
     Limit = True
@@ -141,19 +158,51 @@ while True:
                 input("Press Enter to continue...")
                 exit()
     
-    # Update kills text file
-    if EnableKillAll:
+    # If it's first then save start state
+    if FirstTime:
+        if EnabletKill_AllMobs or len(EnableKill)!=0:
+            Start_Kill_AllMobs_List = []
+            Start_Kill_List         = []
+            for mob in GetKillMobsList(stats):
+                if EnabletKill_AllMobs:
+                    Start_Kill_AllMobs_List.append([mob[0], mob[1]])
+                else:
+                    if mob[0].replace("kills_", "").lower() in EnableKill:
+                        Start_Kill_List.append([mob[0], mob[1]])
+        FirstTime = False
+
+    # Update total kills text file
+    if EnabletTotalKill_AllMobs:
         for mob in GetKillMobsList(stats):
-            f = open("./kills/"+mob[0]+".txt", "w")
+            f = open("./kills/total_"+mob[0]+".txt", "w")
             f.write(str(round(mob[1])))
             f.close()
-    else:
-        [x.lower() for x in EnableKillCount]
+    elif len(EnableTotalKill)!=0:
+        [x.lower() for x in EnableTotalKill]
         for mob in GetKillMobsList(stats):
-            if mob[0].replace("kills_", "").lower() in Config[3]:
-                f = open("./kills/"+mob[0]+".txt", "w")
+            if mob[0].replace("kills_", "").lower() in EnableTotalKill:
+                f = open("./kills/total_"+mob[0]+".txt", "w")
                 f.write(str(round(mob[1])))
                 f.close()
+
+    # Update kills since start program text file
+    if EnabletKill_AllMobs:
+        for mob in GetKillMobsList(stats):
+            for start_mob in Start_Kill_AllMobs_List:
+                if start_mob[0] == mob[0]:
+                    f = open("./kills/"+mob[0]+".txt", "w")
+                    f.write(str(round(mob[1]-start_mob[1])))
+                    f.close()
+    elif len(EnableKill)!=0:
+        [x.lower() for x in EnableKill]
+        for mob in GetKillMobsList(stats):
+            if mob[0].replace("kills_", "").lower() in EnableKill:
+                for start_mob in Start_Kill_List:
+                    if start_mob[0] == mob[0]:
+                        f = open("./kills/"+mob[0]+".txt", "w")
+                        f.write(str(round(mob[1]-start_mob[1])))
+                        f.close()
+
 
     # Update fairy souls
     if EnableFairySouls:
