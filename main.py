@@ -36,6 +36,9 @@ RefreshTime = 30
 EnableTotalKill = ['zealot_enderman', 'ruin_wolf']
 # Enable total kill ( all mobs )
 EnabletTotalKill_AllMobs = False
+# Add commas every thousands ( applied to EnableTotalKill and EnabletTotalKill_AllMobs )
+# Example: 43290 to 43,290
+EnableTotalKillCommas = True
 
 # -------------------- Kill since program start -------------------- #
 # Kill count mobs list ( Leave it empty when EnabletTotalKill_AllMobs is True )
@@ -43,6 +46,9 @@ EnabletTotalKill_AllMobs = False
 EnableKill = []
 # Enable kill ( all mobs )
 EnabletKill_AllMobs = True
+# Add commas every thousands ( applied to EnableKill and EnabletKill_AllMobs )
+# Example: 43290 to 43,290
+EnableKillCommas = True
 
 # ------------------------------ etc ------------------------------ #
 EnableFairySouls = True""")
@@ -60,11 +66,13 @@ Username         = config.Username
 ProfileName      = config.ProfileName
 RefreshTime      = config.RefreshTime
 
-EnableTotalKill             = config.EnableTotalKill
-EnabletTotalKill_AllMobs    = config.EnabletTotalKill_AllMobs
+EnableTotalKill          = config.EnableTotalKill
+EnabletTotalKill_AllMobs = config.EnabletTotalKill_AllMobs
+EnableTotalKillCommas    = config.EnableTotalKillCommas
 
 EnableKill          = config.EnableKill
 EnabletKill_AllMobs = config.EnabletKill_AllMobs
+EnableKillCommas    = config.EnableKillCommas
 
 EnableFairySouls = config.EnableFairySouls
 
@@ -175,14 +183,20 @@ while True:
     if EnabletTotalKill_AllMobs:
         for mob in GetKillMobsList(stats):
             f = open("./kills/total_"+mob[0]+".txt", "w")
-            f.write(str(round(mob[1])))
+            if EnableTotalKillCommas:
+                f.write('{:,.0f}'.format(mob[1]))
+            else:
+                f.write(str(round(mob[1])))
             f.close()
     elif len(EnableTotalKill)!=0:
         [x.lower() for x in EnableTotalKill]
         for mob in GetKillMobsList(stats):
             if mob[0].replace("kills_", "").lower() in EnableTotalKill:
                 f = open("./kills/total_"+mob[0]+".txt", "w")
-                f.write(str(round(mob[1])))
+                if EnableTotalKillCommas:
+                    f.write('{:,.0f}'.format(mob[1]))
+                else:
+                    f.write(str(round(mob[1])))
                 f.close()
 
     # Update kills since start program text file
@@ -191,7 +205,10 @@ while True:
             for start_mob in Start_Kill_AllMobs_List:
                 if start_mob[0] == mob[0]:
                     f = open("./kills/"+mob[0]+".txt", "w")
-                    f.write(str(round(mob[1]-start_mob[1])))
+                    if EnableKillCommas:
+                        f.write('{:,.0f}'.format(mob[1]-start_mob[1]))
+                    else:
+                        f.write(str(round(mob[1]-start_mob[1])))
                     f.close()
     elif len(EnableKill)!=0:
         [x.lower() for x in EnableKill]
@@ -200,7 +217,10 @@ while True:
                 for start_mob in Start_Kill_List:
                     if start_mob[0] == mob[0]:
                         f = open("./kills/"+mob[0]+".txt", "w")
-                        f.write(str(round(mob[1]-start_mob[1])))
+                        if EnableKillCommas:
+                            f.write('{:,.0f}'.format(mob[1]-start_mob[1]))
+                        else:
+                            f.write(str(round(mob[1]-start_mob[1])))
                         f.close()
 
 
