@@ -15,6 +15,9 @@ RefreshTime = 30
 EnableTotalKill = ['zealot_enderman', 'ruin_wolf']
 # Enable total kill ( all mobs )
 EnabletTotalKill_AllMobs = False
+# Add commas every thousands ( applied to EnableTotalKill and EnabletTotalKill_AllMobs )
+# Example: 43290 to 43,290
+EnableTotalKillCommas = True
 
 # -------------------- Kill since program start -------------------- #
 # Kill count mobs list ( Leave it empty when EnabletTotalKill_AllMobs is True )
@@ -22,6 +25,9 @@ EnabletTotalKill_AllMobs = False
 EnableKill = []
 # Enable kill ( all mobs )
 EnabletKill_AllMobs = True
+# Add commas every thousands ( applied to EnableKill and EnabletKill_AllMobs )
+# Example: 43290 to 43,290
+EnableKillCommas = True
 
 # ------------------------------ etc ------------------------------ #
 EnableFairySouls = True
